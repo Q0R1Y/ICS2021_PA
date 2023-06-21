@@ -1,5 +1,5 @@
-STUID = 9939
-STUNAME = Z1J5Y
+STUID = QAQ
+STUNAME = Cabbaken
 
 # DO NOT modify the following code!!!
 
