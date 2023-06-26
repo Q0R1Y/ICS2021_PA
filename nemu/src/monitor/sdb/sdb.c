@@ -38,8 +38,8 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_si(char *args) {
-  int steps;
-  if((steps=atoi(args))>0)
+  int steps=1;
+  if(args==NULL||(steps=atoi(args))>0)
     cpu_exec(steps);
   else
     printf("args error, it should be a integer!\n");
