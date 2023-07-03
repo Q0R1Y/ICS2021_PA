@@ -70,8 +70,8 @@ static int cmd_x(char *args) {
   if(!len||addr == ULONG_MAX)
     return 1;
 //  printf("%lu %d\n", addr, len);
-  printf("%lu\n",vaddr_read(addr, len));
-  printf("%lu\n",paddr_read(addr, len));
+  for(int i=0;i<len;++i)
+    printf("%lu\n",vaddr_read(addr, 4));
   return 0;
 }
 
