@@ -71,7 +71,7 @@ static int cmd_x(char *args) {
     return 1;
 //  printf("%lu %d\n", addr, len);
   for(int i=0;i<len;++i)
-    printf("%lu\n",vaddr_read(addr, 4));
+    printf("%lu\n",vaddr_read(addr+4*i, 4));
   return 0;
 }
 
