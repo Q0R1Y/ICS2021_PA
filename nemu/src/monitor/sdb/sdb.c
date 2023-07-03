@@ -56,6 +56,8 @@ static int cmd_info_r(char *args) {
 }
 
 #include<stdlib.h>
+#include<limits.h>
+#include<memory/vaddr.h>
 static int cmd_x(char *args) {
   char *saddr = strtok(NULL," ");
   char *slen = strtok(NULL, " ");
@@ -64,8 +66,10 @@ static int cmd_x(char *args) {
     return 1;
   int len = atoi(slen);
   vaddr_t addr = strtoul(saddr, NULL, 0x10);
-
-  printf("%lu %d\n", addr, len);
+  if(!len||ULONG_MAX)
+    return 1;
+//  printf("%lu %d\n", addr, len);
+  printf("%lu\n",vaddr_read(addr, len));
   return 0;
 }
 
