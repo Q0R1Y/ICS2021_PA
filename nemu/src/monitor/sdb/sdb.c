@@ -47,17 +47,25 @@ static int cmd_si(char *args) {
 }
 
 static int cmd_info_r(char *args) {
-  if(!strcmp(args, "r")){
+  if(!strcmp(args, "r")) {
     isa_reg_display();
+  } else {
+    return 1;
   }
   return 0;
 }
 
 #include<stdlib.h>
 static int cmd_x(char *args) {
-  char *addr = strtok(NULL," ");
-  char *len = strtok(NULL, " ");
-  printf("%s\n%s\n",addr,len);
+  char *saddr = strtok(NULL," ");
+  char *slen = strtok(NULL, " ");
+//  printf("%s\n%s\n",saddr,slen);
+  if(!saddr||!slen)
+    return 1;
+  int len = atoi(slen);
+  vaddr_t addr = strtoul(saddr, NULL, 0x10);
+
+  printf("%lu %d\n", addr, len);
   return 0;
 }
 
