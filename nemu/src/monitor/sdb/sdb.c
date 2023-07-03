@@ -38,8 +38,8 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_si(char *args) {
-  int steps=1;
-  if(args==NULL||(steps=atoi(args))>0)
+  int steps = 1;
+  if(args == NULL||(steps = atoi(args)) > 0)
     cpu_exec(steps);
   else
     printf("args error, it should be a integer!\n");
@@ -47,9 +47,17 @@ static int cmd_si(char *args) {
 }
 
 static int cmd_info_r(char *args) {
-  if(!strcmp(args,"r")){
+  if(!strcmp(args, "r")){
     isa_reg_display();
   }
+  return 0;
+}
+
+#include<stdlib.h>
+static int cmd_x(char *args) {
+  char *addr = strtok(NULL," ");
+  char *len = strtok(NULL, " ");
+  printf("%s\n%s\n",addr,len);
   return 0;
 }
 
@@ -65,6 +73,7 @@ static struct {
   { "q", "Exit NEMU", cmd_q },
   { "si", "Step into the next n instructions", cmd_si},
   { "info", "display register values", cmd_info_r},
+  { "x", "display memory values", cmd_x},
   /* TODO: Add more commands */
 
 };
