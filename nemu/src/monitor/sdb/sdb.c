@@ -58,6 +58,7 @@ static int cmd_info_r(char *args) {
 #include<stdlib.h>
 #include<limits.h>
 #include<memory/vaddr.h>
+#include<memory/paddr.h>
 static int cmd_x(char *args) {
   char *saddr = strtok(NULL," ");
   char *slen = strtok(NULL, " ");
@@ -70,6 +71,7 @@ static int cmd_x(char *args) {
     return 1;
 //  printf("%lu %d\n", addr, len);
   printf("%lu\n",vaddr_read(addr, len));
+  printf("%lu\n",paddr_read(addr, len));
   return 0;
 }
 
