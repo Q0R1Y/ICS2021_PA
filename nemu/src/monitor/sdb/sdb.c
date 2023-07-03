@@ -66,7 +66,7 @@ static int cmd_x(char *args) {
     return 1;
   int len = atoi(slen);
   vaddr_t addr = strtoul(saddr, NULL, 0x10);
-  if(!len||ULONG_MAX)
+  if(!len||addr == ULONG_MAX)
     return 1;
 //  printf("%lu %d\n", addr, len);
   printf("%lu\n",vaddr_read(addr, len));
