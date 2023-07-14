@@ -66,12 +66,12 @@ static int cmd_x(char *args) {
   if(!saddr||!slen)
     return 1;
   int len = atoi(slen);
-  vaddr_t addr = strtoul(saddr, NULL, 0x10);
+  vaddr_t addr = strtoul(saddr, NULL, 0);
   if(!len||addr == ULONG_MAX)
     return 1;
 //  printf("%lu %d\n", addr, len);
   for(int i=0;i<len;++i)
-    printf("%0lx\n",vaddr_read(addr+4*i, 4));
+    printf("%08lx\n",*(word_t*)vaddr_read(addr+4*i, 4));
   return 0;
 }
 
